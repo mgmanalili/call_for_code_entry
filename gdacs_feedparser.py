@@ -210,16 +210,15 @@ gdacs_fl_7d = 'http://www.gdacs.org/xml/rss_fl_7d.xml'
 gdacs_fl_3m = 'http://www.gdacs.org/xml/rss_fl_3m.xml'
 reliefweb = 'https://reliefweb.int/disasters/rss.xml'
 reliefweb_map = 'https://reliefweb.int/maps/rss.xml'
-dost_pagasa = 'https://www1.pagasa.dost.gov.ph/index.php/738-pagasa-rss-feeds'
+dost_pagasa_sl = 'https://www1.pagasa.dost.gov.ph/prsdcodes/rss/prsd/slforecast.xml'
 
-outdir = r'C:\Users\Michael\Desktop\gdacs'
-fetch_asset(gdacs_all_24h,outdir)
+outfol = '/Users/michael/Desktop/out/'
+fn = fetch_asset(reliefweb_map, out)
+feed = outfol + fn
+print feed
 
-fn = url_to_filename(gdacs_eq_24h)
-print fn
-
-gdacs_data(fn)
-
-
-
+import xml.dom.minidom
+xml = xml.dom.minidom.parse(feed) # or xml.dom.minidom.parseString(xml_string)
+pretty_xml_as_string = xml.toprettyxml()
+print pretty_xml_as_string
 
