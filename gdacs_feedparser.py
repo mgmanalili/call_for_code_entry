@@ -199,6 +199,7 @@ def main():
 if __name__ == '__main__':
     main()
 
+
 who = 'http://www.who.int/feeds/entity/hac/en/rss.xml'
 gdacs_eq_24h = 'http://www.gdacs.org/xml/rss_eq_24h.xml'
 gdacs_eq_gt55_48h = 'http://www.gdacs.org/xml/rss_eq_48h_med.xml'
@@ -212,14 +213,32 @@ reliefweb = 'https://reliefweb.int/disasters/rss.xml'
 reliefweb_map = 'https://reliefweb.int/maps/rss.xml'
 dost_pagasa_sl = 'https://www1.pagasa.dost.gov.ph/prsdcodes/rss/prsd/slforecast.xml'
 
+
 outfol = '/Users/michael/Desktop/out/'
-fn = fetch_asset(reliefweb_map, out)
+fn = fetch_asset(gdacs_all_24h, outfol)
 feed = outfol + fn
 print feed
 
 import xml.dom.minidom
+import xml.etree.ElementTree as ET
 xml = xml.dom.minidom.parse(feed) # or xml.dom.minidom.parseString(xml_string)
-pretty_xml_as_string = xml.toprettyxml()
-print pretty_xml_as_string
+xml_string = xml.toprettyxml()
+print xml_string
 
-print "hello"
+
+tree = ET.parse(feed)
+root = tree.getroot()
+
+
+for element in root[0].iter():
+    print element.tag, element.attrib
+
+
+from xml.dom import minidom
+doc = minidom.parse(feed)
+
+for count in doc.getElementsByTagName("guid"):
+    print count.toxml()
+
+for elem in root.findall('.//guid'):
+    print elem.tag, elem.attrib
