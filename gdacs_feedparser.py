@@ -212,6 +212,7 @@ gdacs_fl_3m = 'http://www.gdacs.org/xml/rss_fl_3m.xml'
 reliefweb = 'https://reliefweb.int/disasters/rss.xml'
 reliefweb_map = 'https://reliefweb.int/maps/rss.xml'
 dost_pagasa_sl = 'https://www1.pagasa.dost.gov.ph/prsdcodes/rss/prsd/slforecast.xml'
+eonet = 'http://emergency.copernicus.eu/mapping/news/feed'
 
 
 outfol = '/Users/michael/Desktop/out/'
