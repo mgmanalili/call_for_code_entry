@@ -213,7 +213,9 @@ reliefweb = 'https://reliefweb.int/disasters/rss.xml'
 reliefweb_map = 'https://reliefweb.int/maps/rss.xml'
 dost_pagasa_sl = 'https://www1.pagasa.dost.gov.ph/prsdcodes/rss/prsd/slforecast.xml'
 eonet = 'http://emergency.copernicus.eu/mapping/news/feed'
-
+copernicus_ems_mapping = 'http://emergency.copernicus.eu/mapping/activations-risk-and-recovery/feed'
+copernicus_ems_rapid = 'http://emergency.copernicus.eu/mapping/activations-rapid/feed'
+redcross = 'https://www.icrc.org/en/rss/general'
 
 outfol = '/Users/michael/Desktop/out/'
 fn = fetch_asset(gdacs_all_24h, outfol)
