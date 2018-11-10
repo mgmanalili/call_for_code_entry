@@ -1,0 +1,3 @@
+GDACS = 'http://www.gdacs.org/xml/rss.xml'
+COPERNICUS_RAPID_MAPPING = 'http://emergency.copernicus.eu/mapping/activations-rapid/feed'
+EONET = 'https://eonet.sci.gsfc.nasa.gov/api/v2.1/events/rss'
