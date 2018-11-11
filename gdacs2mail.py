@@ -4,10 +4,12 @@ import feedparser
 import smtplib
 
 ### GeoRSS
-gdacs_geo = 'http://www.gdacs.org/xml/gdacs_cap.xml' #V2
-gdacs_main = 'http://www.gdacs.org/xml/rss.xml' #v2 has attrib where
+GDACS = 'http://www.gdacs.org/xml/rss.xml'
+COPERNICUS_RAPID_MAPPING = 'http://emergency.copernicus.eu/mapping/activations-rapid/feed'
+EONET = 'https://eonet.sci.gsfc.nasa.gov/api/v2.1/events/rss'
+NOAA_TSUNAMI = 'https://ptwc.weather.gov/feeds/ptwc_rss_pacific.xml'
 
-RSS_URLS = [gdacs_main]
+RSS_URLS = [GDACS] #not tested [GDACS,EONET,NOAA_TSUNAMI,COPERNICUS_RAPID_MAPPING]
 
 feeds = []
 
@@ -17,18 +19,18 @@ def job():
 
 	for feed in feeds:
 	    for post in feed.entries:
-	    	a = post.title
-	    	b = post.link
-	    	c = post.description
-	        #w = post.where
+	    	t = post.title
+	    	l = post.link
+	    	d = post.description
+	        w = post.where
 	        g = post.guid
-    		print a,b,c,g + '\n'
+    		print t,g,d,l,w + '\n'
 	        s = smtplib.SMTP('smtp.gmail.com', 587)
 	        s.starttls()
-	        s.login("your.other.account@gmail.com", "password")
-	        msg = a
-	        sender = 'your.other.account@gmail.com'
-	        recipients = ['reciever.email@gmail.com']
+	        s.login("your.gmail.server@gmail.com", "password")
+	        msg = d
+	        sender = 'your.gmail.server@gmail.com'
+	        recipients = ['recipient1@gmail.com', 'recipent2@gmail.com]
 	        s.sendmail(sender, recipients, str(msg))
 	        s.quit()
 
