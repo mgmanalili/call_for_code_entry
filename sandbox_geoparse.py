@@ -35,7 +35,7 @@ for feed in feeds:
     df_title['title'] = pd.DataFrame(title)
     frames = [df_guid, df_xy, df_title]
     
-    data = pd.concat([df_guid, df_xy, df_title],axis=1, ignore_index=False)
+    data = pd.concat([df_guid['guid'], df_xy, df_title['title']],axis=1, ignore_index=False)
 
 #data
 #f = 'C:/Users/Michael/Desktop/Notebooks/test.csv'
