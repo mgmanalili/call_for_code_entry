@@ -33,7 +33,7 @@ for feed in feeds:
     df_guid['guid'] = pd.DataFrame(guid)
     df_xy = pd.DataFrame(xy)
     df_title['title'] = pd.DataFrame(title)
-    frames = [df_guid, df_xy, df_title]
+    frames = [df_guid['guid'], df_xy, df_title['title']]
     
     data = pd.concat([df_guid['guid'], df_xy, df_title['title']],axis=1, ignore_index=False)
 
