@@ -14,7 +14,7 @@ COPERNICUS_RAPID_MAPPING = 'http://emergency.copernicus.eu/mapping/activations-r
 EONET = 'https://eonet.sci.gsfc.nasa.gov/api/v2.1/events/rss.xml'
 NOAA_TSUNAMI = 'https://ptwc.weather.gov/feeds/ptwc_rss_pacific.xml'
 
-RSS_URLS = [GDACS, NOAA_TSUNAMI, COPERNICUS_RAPID_MAPPING]
+RSS_URLS = [GDACS, NOAA_TSUNAMI, COPERNICUS_RAPID_MAPPING, EONET]
 
 feeds = []
 guid = []
@@ -44,10 +44,9 @@ for feed in feeds:
     frames = [df_guid['guid'], df_xy, df_title['title'], df_desc['desc'], df_link['link']]
     
     data = pd.concat([df_guid['guid'], df_xy, df_title['title'], df_desc['desc'], df_link['link']],axis=1, ignore_index=False)
-
-#data
+data.head(2)
 #f = 'C:/Users/Michael/Desktop/Notebooks/test.csv'
-#data.to_csv(f, encoding='utf-8')
+#data.to_csv(f, encoding='utf-8')  
 
 geometry = [Point(xy) for xy in zip(data['coordinates'])]
 df = data.drop(['coordinates'], axis=1)
