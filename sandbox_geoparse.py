@@ -11,7 +11,7 @@ import os
 ### GeoRSS
 GDACS = 'http://www.gdacs.org/xml/rss.xml'
 COPERNICUS_RAPID_MAPPING = 'http://emergency.copernicus.eu/mapping/activations-rapid/feed'
-EONET = 'https://eonet.sci.gsfc.nasa.gov/api/v2.1/events/rss'
+EONET = 'https://eonet.sci.gsfc.nasa.gov/api/v2.1/events/rss.xml'
 NOAA_TSUNAMI = 'https://ptwc.weather.gov/feeds/ptwc_rss_pacific.xml'
 
 RSS_URLS = [GDACS, NOAA_TSUNAMI, COPERNICUS_RAPID_MAPPING]
@@ -20,6 +20,8 @@ feeds = []
 guid = []
 xy = []
 title = []
+desc = []
+link = []
 
 for url in RSS_URLS:
     feeds.append(feedparser.parse(url))
@@ -29,13 +31,19 @@ for feed in feeds:
         guid.append(post.guid)
         xy.append(post.where)
         title.append(post.title)
+        desc.append(post.description)
+        link.append(post.link)
+        
     #print len(guid, title, coords)
     df_guid['guid'] = pd.DataFrame(guid)
     df_xy = pd.DataFrame(xy)
     df_title['title'] = pd.DataFrame(title)
-    frames = [df_guid['guid'], df_xy, df_title['title']]
+    df_desc['desc'] = pd.DataFrame(desc)
+    df_link['link'] = pd.DataFrame(link)
     
-    data = pd.concat([df_guid['guid'], df_xy, df_title['title']],axis=1, ignore_index=False)
+    frames = [df_guid['guid'], df_xy, df_title['title'], df_desc['desc'], df_link['link']]
+    
+    data = pd.concat([df_guid['guid'], df_xy, df_title['title'], df_desc['desc'], df_link['link']],axis=1, ignore_index=False)
 
 #data
 #f = 'C:/Users/Michael/Desktop/Notebooks/test.csv'
