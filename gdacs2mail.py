@@ -3,6 +3,8 @@ import time
 import feedparser
 import smtplib
 
+### REFER TO SANBOX_GEOPARSE.py
+
 ### GeoRSS
 GDACS = 'http://www.gdacs.org/xml/rss.xml'
 COPERNICUS_RAPID_MAPPING = 'http://emergency.copernicus.eu/mapping/activations-rapid/feed'
